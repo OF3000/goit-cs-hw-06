@@ -1,0 +1,38 @@
+version: "3"
+services:
+  deimos:
+    container_name: deimos
+    image: busybox
+    command: sleep infinity
+    networks:
+      - mars
+  phobos:
+    container_name: phobos
+    image: busybox
+    command: sleep infinity
+    networks:
+      - mars
+  moon:
+    container_name: moon 
+    image: busybox 
+    command: sleep infinity
+    networks:
+      - earth
+  web:
+    container_name: hello_world
+    image: nginx
+    ports:
+      - 8000:80
+
+  test:
+    container_name: test
+    image: busybox
+    command: sleep infinity
+
+networks:
+  mars:
+    name: mars
+    driver: bridge
+  earth:
+    name: earth
+
